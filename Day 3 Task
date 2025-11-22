@@ -1,0 +1,32 @@
+create database university;
+use university;
+
+#Clauses & Operators
+
+#DISTINCT & WHERE
+create table students(
+Student_ID int,
+Student_Names varchar(100),
+Departments varchar(100),
+GPA decimal(10,2),
+Email varchar (50)
+);
+insert into students (Student_ID, Student_Names, Departments, GPA, Email) values
+(1,"Kumar","MBA",6.9,"kumar@rediffmailcom"),
+(2,"Raja","CS",7.8,"Raja@yahoomailcom"),
+(3,"Vijay","Microbiology",8.2,"NA"),
+(4,"Ramu","Biotechnology",9.1,"ramu@gmail.com"),
+(5,"Raju","Bcom",6.9,NULL);
+
+SELECT DISTINCT Departments from students;
+
+SELECT * FROM students WHERE Email IS NULL;
+
+SELECT * FROM students WHERE Email IS NOT NULL;
+
+SELECT * FROM students WHERE Departments IN ("Microbiology", "Biotechnology");
+
+SELECT * FROM students WHERE GPA BETWEEN 7.0 and 8.0;
+
+SELECT * FROM students WHERE GPA NOT BETWEEN 6.0 and 9.0;
+
