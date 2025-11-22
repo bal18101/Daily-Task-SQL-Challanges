@@ -1,0 +1,71 @@
+create database School;
+use School;
+
+CREATE table Students(
+Student_ID INT PRIMARY KEY,
+Student_Names VARCHAR(100),
+Course_ID INT,
+Course_Names VARCHAR(100)
+);
+
+CREATE table Courses(
+Course_ID INT PRIMARY KEY,
+Course_Names VARCHAR(100),
+Location VARCHAR(100)
+);
+
+INSERT into Students VALUES
+(1, "Balraj", "40001", "Data Analytics"),
+(2, "Vijay", "40002", "Data Science"),
+(3, "Kumar", "40003", "Stock Market");
+
+INSERT into Students (Student_ID, Student_Names) VALUES
+(4, "Raju");
+
+select * from Students;
+
+INSERT into Courses VALUES
+(151, "Spoken English", "Adyar"),
+(152, "SAP", "Guindy"),
+(153, "German Language", "Anna Nagar");
+
+INSERT into Courses (Course_ID, Course_Names) VALUES
+(154, "Testing");
+select * from Courses;
+
+#INNER JOIN
+SELECT s.Student_Names, c.Course_Names from Students As s Inner join Courses As c on s.Course_ID = c.Course_ID;
+
+#LEFT AND RIGHT JOIN
+SELECT s.Student_Names, c.Course_Names from Students As s Left join Courses As c on s.Course_ID = c.Course_ID;
+SELECT s.Student_Names, c.Course_Names from Students As s Right join Courses As c on s.Course_ID = c.Course_ID;
+
+create table Employees_current(
+emp_id int primary key,
+emp_name varchar(50));
+
+insert into Employees_current values 
+(1, "Steve"),
+(2, "Adam"),
+(3, "Rahul"),
+(4, "Kohli");
+select * from Employees_current;
+
+drop employees_past;
+
+create table Employees_past(
+past_emp_id int primary key,
+past_emp_name varchar(50));
+
+
+insert into Employees_past values
+(3, "Rahul"),
+(4, "Kohli"),
+(2, "Meera"),
+(1, "Kathir");
+select * from Employees_past;
+
+-- UNION VS UNION ALL --
+select emp_id, emp_name from Employees_current union select past_emp_id, past_emp_name from Employees_past;
+
+select emp_id, emp_name from Employees_current union all select past_emp_id, past_emp_name from Employees_past;
