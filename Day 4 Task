@@ -1,0 +1,63 @@
+Use Shop;
+
+CREATE table Product(
+Product_id int primary key,
+Product_name varchar (100), 
+Product_price int,
+Quantity int
+);
+
+insert into Product values
+(1001, "Owen", 42000, 10),
+(1002, "AC", 35000, 15),
+(1003, "TV", 50000, 20),
+(1004, "Washing machine", 28000, 25);
+
+
+CREATE table Shop_Sales(
+sales_id int primary key,
+customer_id int,
+customer_name varchar (50),
+product_id int,
+foreign key (product_id) references Product(product_id),
+sales_price int,
+sales_quantity int,
+total_amount int
+);
+
+insert into Shop_Sales VALUES
+(111, 243, "Rahul", 1001, 42000, 3, 94000),
+(112, 244, "Kiran", 1002, 35000, 2, 65000);
+
+create table employees(
+employee_id int primary key,
+employee_name varchar (50),
+department_id int,
+department_name varchar(50)
+);
+
+INSERT INTO employees values 
+(101, "Vijay", 1, "PRODUCTION"),
+(102, "Dhilip", 2, "SALES"),
+(103, "Murugan", 3, "ACCOUNTS"),
+(104, "Senthil", 4, "FOOD");
+
+
+#ORDER BY & LIMIT
+select * from Product ORDER BY Product_price DESC LIMIT 3;
+
+#AGGREGATE FUNTIONS
+select count(*) AS total_sales from Shop_Sales;
+
+select sum(total_amount) AS total_revenue from Shop_Sales;
+
+select avg(total_amount) AS Avg_salary from Shop_Sales;
+
+select max(total_amount) AS highest_salary from Shop_Sales;
+
+select min(total_amount) AS lowest_salary from Shop_Sales;
+
+#GROUP BY & HAVING
+select department_id, count(employee_id) as total_employees from employees
+group by department_id having total_employees >10;
+
