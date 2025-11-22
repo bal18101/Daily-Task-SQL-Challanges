@@ -1,0 +1,32 @@
+create database City_Hospital;
+use City_Hospital;
+
+# create Patients table
+create table Patients(
+PatientID int,
+PatientName varchar (50),
+Age int,
+Gender enum("M", "F"),
+AdmissionDate date
+);
+
+#ALTER – Add Column
+alter table Patents add column Doctor_Assigned varchar(50);
+
+#ALTER – Modify Column
+alter table Patients modify column PatientName VARCHAR(100);
+
+#RENAME Table
+rename table Patients to Patients_info;
+
+# TRUNCATE vs DROP
+Truncate table Patients_info;
+Drop table Patents_info;
+select * from Patients_info;
+
+
+
+
+
+
+
